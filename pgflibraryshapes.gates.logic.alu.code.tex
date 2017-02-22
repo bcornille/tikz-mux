@@ -1,0 +1,70 @@
+\usepgflibrary{shapes.gates.logic}
+\usepgflibrary{shapes.gates.logic.IEC}
+
+\pgfdeclareshape{alu} {
+
+  \savedanchor\centerpoint{
+    \pgf@x=.5\wd\pgfnodeparttextbox
+    \pgf@y=.5\ht\pgfnodeparttextbox
+    \advance\pgf@y by-.5\dp\pgfnodeparttextbox
+  } 
+  \saveddimen\halfwidth{%
+    \pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/minimum width}}%  
+    \pgf@x=0.5\pgf@xb
+  }
+  \saveddimen\halfheight{
+    \pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/minimum height}}%  
+    \pgf@x=0.5\pgf@yb
+  }
+
+  \anchor{center}{\centerpoint}
+  \anchor{mid}{\centerpoint\pgfmathsetlength\pgf@y{.5ex}}
+  \anchor{base}{\centerpoint\pgf@y=0pt}
+  \anchor{north}{\centerpoint\advance\pgf@y by\halfheight}
+  \anchor{dataA}{\centerpoint\pgfutil@tempdima=\halfheight\advance\pgf@x by-\halfwidth\advance\pgf@y by0.5625\pgfutil@tempdima}
+  \anchor{dataB}{\centerpoint\pgfutil@tempdima=\halfheight\advance\pgf@x by-\halfwidth\advance\pgf@y by-0.5625\pgfutil@tempdima}
+  \anchor{invA}{\centerpoint\pgfutil@tempdima=\halfheight\pgfutil@tempdimb=\halfwidth\advance\pgf@x by-0.5\pgfutil@tempdimb\advance\pgf@y by0.875\pgfutil@tempdima}
+  \anchor{invB}{\centerpoint\pgfutil@tempdima=\halfheight\pgfutil@tempdimb=\halfwidth\advance\pgf@x by-0.5\pgfutil@tempdimb\advance\pgf@y by-0.875\pgfutil@tempdima}
+  \anchor{op}{\centerpoint\pgfutil@tempdima=\halfheight\advance\pgf@y by-0.75\pgfutil@tempdima}
+  \anchor{Cin}{\centerpoint\pgfutil@tempdima=\halfheight\advance\pgf@y by 0.75\pgfutil@tempdima}
+  \anchor{sign}{\centerpoint\pgfutil@tempdima=\halfheight\pgfutil@tempdimb=\halfwidth\advance\pgf@x by0.5\pgfutil@tempdimb\advance\pgf@y by-0.625\pgfutil@tempdima}
+  \anchor{output}{\centerpoint\advance\pgf@x by\halfwidth}
+  \anchor{zero}{\centerpoint\pgfutil@tempdima=\halfheight\advance\pgf@x by\halfwidth\advance\pgf@y by0.25\pgfutil@tempdima}
+  \anchor{ofl}{\centerpoint\pgfutil@tempdima=\halfheight\advance\pgf@x by\halfwidth\advance\pgf@y by-0.25\pgfutil@tempdima}
+  \anchor{south}{\centerpoint\advance\pgf@y by-\halfheight}
+  \anchor{west}{\centerpoint\advance\pgf@x by-\halfwidth}
+  \anchor{east}{\centerpoint\advance\pgf@x by\halfwidth}
+
+  \backgroundpath{
+     \pgfutil@tempdima=\halfheight
+     \pgfutil@tempdimb=\halfwidth
+     \centerpoint
+     \advance\pgf@x by -0.625\pgfutil@tempdimb
+     \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \centerpoint
+     \advance\pgf@x by -\halfwidth
+     \advance\pgf@y by 0.125\pgfutil@tempdima
+     \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \centerpoint
+     \advance\pgf@x by -\halfwidth
+     \advance\pgf@y by \halfheight
+     \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \centerpoint
+     \advance\pgf@x by \halfwidth
+     \advance\pgf@y by 0.5\pgfutil@tempdima
+     \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \centerpoint
+     \advance\pgf@x by \halfwidth
+     \advance\pgf@y by -0.5\pgfutil@tempdima
+     \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \centerpoint
+     \advance\pgf@x by -\halfwidth
+     \advance\pgf@y by -\halfheight
+     \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \centerpoint
+     \advance\pgf@x by -\halfwidth
+     \advance\pgf@y by -0.125\pgfutil@tempdima
+     \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+     \pgfpathclose
+  }
+}
